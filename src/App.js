@@ -1,25 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import {Component} from "react";
+import axios from "axios";
+import ShipmentsTable from "./components/ShipmentsTable";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    state = {
+        shipmentsData: []
+    }
+
+    url = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
+
+    componentDidMount() {
+        axios.get(this.url)
+            .then(res => {
+                const data = res.data;
+                this.setState({shipmentsData: data});
+            });
+    }
+
+
+
+    render() {
+        return (
+            <div className="App">
+              <ShipmentsTable data={this.state.shipmentsData}/>
+            </div>
+        );
+    }
 }
 
 export default App;
