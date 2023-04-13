@@ -27,7 +27,7 @@ function ShipmentsTable(props) {
                             <td>{ship.trackingNo}</td>
                             <td>{ship.status}</td>
                             <td>{ship.consignee}</td>
-                            <td> <button> <img src={img}/> </button>
+                            <td> <button> <img src={img} alt="notes"/> </button>
                                 <button>x</button>  </td>
                         </tr>
                     )
