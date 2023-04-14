@@ -2,6 +2,8 @@ import './App.css';
 import {Component} from "react";
 import axios from "axios";
 import ShipmentsTable from "./components/ShipmentsTable";
+import {Route, Routes} from "react-router-dom";
+import MyForm from "./components/MyForm";
 
 class App extends Component {
 
@@ -20,11 +22,18 @@ class App extends Component {
     }
 
 
-
     render() {
         return (
             <div className="App">
-              <ShipmentsTable data={this.state.shipmentsData}/>
+{/*                <Routes>
+
+                <Route path="/users" element={<UsersContainer/>}/>
+                            <Route path="/login" element={<LoginPage/>}/>
+                </Routes>*/}
+
+                {/*<ShipmentsTable data={this.state.shipmentsData}/>*/}
+                <MyForm/>
+
             </div>
         );
     }
