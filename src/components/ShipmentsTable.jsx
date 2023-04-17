@@ -28,7 +28,7 @@ function ShipmentsTable(props) {
                             <td>{ship.status}</td>
                             <td>{ship.consignee}</td>
                             <td>
-                                <button><img src={img} alt="notes"/></button>
+                                <button onClick={() => alert(ship.date)}> <img src={img} alt="notes"/></button>
                                 <button>x</button>
                             </td>
                         </tr>

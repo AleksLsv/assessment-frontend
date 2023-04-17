@@ -3,12 +3,12 @@ import styles from "./Form.module.css";
 
 function MyForm() {
     const [formData, setFormData] = useState({
-        orderNo: "Value 1",
-        date: "Value 2",
-        customer: "Value 3",
-        trackingNo: "Value 4",
-        consignee: "Value 5",
-        status: "Value 6"
+        orderNo: "-",
+        date: "-",
+        customer: "-",
+        trackingNo: "-",
+        consignee: "-",
+        status: "-"
     });
 
     const handleChange = (e, field) => {
