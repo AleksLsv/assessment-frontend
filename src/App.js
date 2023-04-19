@@ -14,6 +14,7 @@ class App extends Component {
     }
 
     url = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
+
     /*url = "/assets/data/shipments.json";*/
 
     componentDidMount() {
@@ -26,18 +27,13 @@ class App extends Component {
 
     }
 
-
     render() {
         return (
             <div className="App">
-{/*                <Routes>
-
-                <Route path="/users" element={<UsersContainer/>}/>
-                            <Route path="/login" element={<LoginPage/>}/>
-                </Routes>*/}
-
-                <ShipmentsTable data={this.state.shipmentsData}/>
-               {/* <MyForm/>*/}
+                <Routes>
+                    <Route path="/" element={<ShipmentsTable data={this.state.shipmentsData}/>}/>
+                    <Route path="/form" element={<MyForm/>}/>
+                </Routes>
 
             </div>
         );
