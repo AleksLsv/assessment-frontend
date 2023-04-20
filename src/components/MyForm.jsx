@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
+import {useNavigate} from "react-router-dom";
 
-function MyForm() {
+function MyForm({ship}) {
     const [formData, setFormData] = useState({
         orderNo: "-",
         date: "-",
@@ -14,6 +15,23 @@ function MyForm() {
     const handleChange = (e, field) => {
         setFormData({ ...formData, [field]: e.target.value });
     };
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/');
+    };
+
+       function handleButtonClick(props) {
+           debugger;
+           alert('Date: ' + props.date + ' consignee: ' + props.consignee);
+           debugger;
+
+       }
+
+
+
+
 
     const formFields = [
         { label: "Order No", field: "orderNo" },
@@ -40,6 +58,14 @@ function MyForm() {
                 </div>
             ))}
         </form>
+
+
+            {/*<button className={styles.button} onClick={handleClick}>*/}
+            <button className={styles.button} onClick={() => handleButtonClick(ship)}>
+                Back
+            </button>
+
+
         </div>
     );
 }

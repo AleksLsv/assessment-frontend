@@ -1,13 +1,19 @@
 import React from "react";
 import img from './../assets/img/notes.png'
-import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function TableRow({ship}) {
 
-    function handleButtonClick(props) {
+    const navigate = useNavigate();
+
+ /*   function handleButtonClick(props) {
         alert('Date: ' + props.date + ' consignee: ' + props.consignee);
 
-        /*alert('Date:');*/
+    }*/
+
+    const handleClick = () => {
+        navigate('/form', { state: { ship: ship} });
+        debugger;
     }
 
     return (
@@ -19,9 +25,10 @@ function TableRow({ship}) {
             <td>{ship.status}</td>
             <td>{ship.consignee}</td>
             <td>
-                {/*<NavLink to="/form">*/}
-                <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>
-                {/*</NavLink>*/}
+
+               {/* <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>*/}
+                <button onClick={handleClick}><img src={img} alt="notes"/></button>
+
                 <button>x</button>
             </td>
         </tr>

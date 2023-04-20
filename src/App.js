@@ -5,6 +5,8 @@ import ShipmentsTable from "./components/ShipmentsTable";
 import {Route, Routes} from "react-router-dom";
 import MyForm from "./components/MyForm";
 import dataFromFile from './assets/data/shipments.json';
+import Test2 from "./components/Test2";
+import Test1 from "./components/Test1";
 
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
     }
 
     url = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
+    url1 = " ";
 
     /*url = "/assets/data/shipments.json";*/
 
@@ -27,12 +30,20 @@ class App extends Component {
 
     }
 
+
+
     render() {
+
+        const name = 'John';
+        const age = 30;
+
         return (
             <div className="App">
                 <Routes>
                     <Route path="/" element={<ShipmentsTable data={this.state.shipmentsData}/>}/>
                     <Route path="/form" element={<MyForm/>}/>
+                    <Route path="/test1" element={<Test1 name={name} age={age}/>} />
+                    <Route path="/test2" element={<Test2 />} />
                 </Routes>
 
             </div>
