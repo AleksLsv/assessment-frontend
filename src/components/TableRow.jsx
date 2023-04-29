@@ -12,8 +12,7 @@ function TableRow({ship}) {
     }*/
 
     const handleClick = () => {
-        navigate('/form', { state: { ship: ship} });
-        debugger;
+        navigate('/form', { state: { ship } });
     }
 
     return (

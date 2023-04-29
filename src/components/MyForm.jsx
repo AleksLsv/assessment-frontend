@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
 import {useNavigate} from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
-function MyForm({ship}) {
+function MyForm() {
+    const { state } = useLocation();
+    const { ship } = state;
+
     const [formData, setFormData] = useState({
+        orderNo: ship.orderNo,
+        date: ship.date,
+        customer: ship.customer,
+        trackingNo: ship.trackingNo,
+        consignee: ship.consignee,
+        status: ship.status
+    });
+
+
+/*    const [formData, setFormData] = useState({
         orderNo: "-",
-        date: "-",
+        date: ship.date,
         customer: "-",
         trackingNo: "-",
         consignee: "-",
         status: "-"
-    });
+    });*/
+
+
 
     const handleChange = (e, field) => {
         setFormData({ ...formData, [field]: e.target.value });
@@ -21,16 +37,6 @@ function MyForm({ship}) {
     const handleClick = () => {
         navigate('/');
     };
-
-       function handleButtonClick(props) {
-           debugger;
-           alert('Date: ' + props.date + ' consignee: ' + props.consignee);
-           debugger;
-
-       }
-
-
-
 
 
     const formFields = [
@@ -60,8 +66,7 @@ function MyForm({ship}) {
         </form>
 
 
-            {/*<button className={styles.button} onClick={handleClick}>*/}
-            <button className={styles.button} onClick={() => handleButtonClick(ship)}>
+            <button className={styles.button} onClick={handleClick}>
                 Back
             </button>
 
