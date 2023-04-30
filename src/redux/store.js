@@ -7,23 +7,28 @@ import anyReducer from "./any-reducer";
 
 let reducers = combineReducers({
     shipments: shipmentsReducer,
-    anyPage: anyReducer
+    another: anyReducer
 });
 
 
 /*const store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));*/
 
-const store = createStore(
+/*const store = createStore(
     shipmentsReducer,
     applyMiddleware(thunkMiddleware),
-);
+);*/
 
 
-/*const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+/*const store = createStore(
+    reducers,
+    applyMiddleware(thunkMiddleware),
+);*/
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = legacy_createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 
-window.__store__ = store;*/
+window.__store__ = store;
 
 /*const store = legacy_createStore(reducers);*/
 

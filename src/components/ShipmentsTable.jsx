@@ -4,7 +4,7 @@ import TableRow from "./TableRow";
 
 function ShipmentsTable(props) {
     const rows = props.data
-        .map((ship) => <TableRow ship={ship}/>);
+        .map((ship) => <TableRow key={ship.orderNo} ship={ship}/>);
 
     return (
         <table id="my-table" className={s.table}>

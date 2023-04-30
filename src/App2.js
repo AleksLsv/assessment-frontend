@@ -19,6 +19,7 @@ class App extends React.Component {
         }
 
         if (error) {
+            /*return <div>Error: {error.message}</div>;*/
             const shipments = require('./assets/data/shipments.json');
             return (
                     <div className="App">
@@ -42,12 +43,18 @@ class App extends React.Component {
                 </Routes>
 
             </div>
+
+            /*<ul>
+                {shipments.map((shipment) => (
+                    <li key={shipment.orderNo}>{shipment.customer}</li>
+                ))}
+            </ul>*/
         );
     }
 }
 
 function mapStateToProps(state) {
-    const {error, loading, shipments} = state;
+    const {error, loading, shipments} = state.shipments;
     return {
         error,
         loading,
