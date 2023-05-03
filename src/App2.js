@@ -1,14 +1,20 @@
+import './App.css';
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchShipmentsData} from './actions/actions';
+import {deleteShipment, fetchShipmentsData} from './actions/actions';
 import {Route, Routes} from "react-router-dom";
 import ShipmentsTable from "./components/ShipmentsTable";
 import MyForm from "./components/MyForm";
 
-class App extends React.Component {
+
+class App2 extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchShipmentsData());
     }
+
+    handleDelete = (orderNo) => {
+        this.props.dispatch(deleteShipment(orderNo));
+    };
 
     render() {
         const {error, loading, shipments} = this.props;
@@ -25,7 +31,7 @@ class App extends React.Component {
                     <div className="App">
                         <h4>Error: {error.message}  - Data loaded from file  </h4>
                         <Routes>
-                            <Route path="/" element={<ShipmentsTable data={shipments}/>}/>
+                            <Route path="/" element={<ShipmentsTable data={shipments} onDelete={this.handleDelete}/>}/>
                             <Route path="/form" element={<MyForm/>}/>
                         </Routes>
                     </div>
@@ -62,4 +68,13 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(App);
+let mapDispatchToProps = (dispatch) => {
+    return {
+        deleteShipment: (orderNo) => {
+            dispatch(deleteShipment(orderNo));
+        }
+    }
+}
+
+export default connect(mapStateToProps)(App2);
+//export default connect(mapStateToProps, mapDispatchToProps)(App2);

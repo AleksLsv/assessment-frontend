@@ -15,6 +15,10 @@ function TableRow({ship}) {
         navigate('/form', { state: { ship } });
     }
 
+    const handleDelete = () => {
+        alert('orderNo: ' + ship.orderNo);
+    };
+
     return (
         <tr key={ship.orderNo}>
             <td>{ship.orderNo}</td>
@@ -28,7 +32,7 @@ function TableRow({ship}) {
                {/* <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>*/}
                 <button onClick={handleClick}><img src={img} alt="notes"/></button>
 
-                <button>x</button>
+                <button onClick={handleDelete} > x </button>
             </td>
         </tr>
     );

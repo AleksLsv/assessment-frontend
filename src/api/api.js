@@ -1,5 +1,6 @@
 import axios from 'axios';
 
 export function fetchShipments() {
-    return axios.get('https://my.api.mockaroo.com/shipments.json?key=5e0b62d0');
+    const url = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
+    return axios.get(url);
 }
