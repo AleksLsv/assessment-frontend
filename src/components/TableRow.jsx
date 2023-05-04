@@ -19,6 +19,10 @@ function TableRow({ship}) {
         alert('orderNo: ' + ship.orderNo);
     };
 
+  /*  const handleDelete2 = (orderNo) => {
+        props.onDelete(orderNo);
+    };*/
+
     return (
         <tr key={ship.orderNo}>
             <td>{ship.orderNo}</td>

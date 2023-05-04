@@ -16,6 +16,7 @@ class App2 extends React.Component {
         this.props.dispatch(deleteShipment(orderNo));
     };
 
+
     render() {
         const {error, loading, shipments} = this.props;
 
@@ -44,7 +45,7 @@ class App2 extends React.Component {
                 <h4>Connection successful - Data loaded from server</h4>
 
                 <Routes>
-                    <Route path="/" element={<ShipmentsTable data={shipments}/>}/>
+                    <Route path="/" element={<ShipmentsTable data={shipments} onDelete={this.handleDelete}/>}/>
                     <Route path="/form" element={<MyForm/>}/>
                 </Routes>
 
@@ -60,21 +61,23 @@ class App2 extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {error, loading, shipments} = state.shipments;
+    const {error, loading, shipments, loadedFromFile} = state.shipments;
     return {
         error,
         loading,
         shipments,
+        loadedFromFile,
     };
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        dispatch,
         deleteShipment: (orderNo) => {
             dispatch(deleteShipment(orderNo));
         }
     }
 }
 
-export default connect(mapStateToProps)(App2);
-//export default connect(mapStateToProps, mapDispatchToProps)(App2);
+//export default connect(mapStateToProps)(App2);
+export default connect(mapStateToProps, mapDispatchToProps)(App2);

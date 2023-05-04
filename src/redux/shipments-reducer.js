@@ -2,7 +2,8 @@ import {
     FETCH_SHIPMENTS_REQUEST,
     FETCH_SHIPMENTS_SUCCESS,
     FETCH_SHIPMENTS_FAILURE,
-    DELETE_SHIPMENT,
+
+    DELETE_SHIPMENT, LOADED_FROM_FILE,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -26,6 +27,15 @@ function shipmentsReducer(state = initialState, action) {
                 shipments: action.shipments,
                 error: null,
             };
+        case LOADED_FROM_FILE:
+            return {
+                ...state,
+                loading: false,
+                shipments: action.shipments,
+                error: null,
+                loadedFromFile: true
+            };
+
         case FETCH_SHIPMENTS_FAILURE:
             return {
                 ...state,

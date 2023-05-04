@@ -1,7 +1,7 @@
 import {
     FETCH_SHIPMENTS_REQUEST,
     FETCH_SHIPMENTS_SUCCESS,
-    FETCH_SHIPMENTS_FAILURE, DELETE_SHIPMENT,
+    FETCH_SHIPMENTS_FAILURE, DELETE_SHIPMENT, LOADED_FROM_FILE,
 } from './actionTypes';
 import { fetchShipments } from '../api/api';
 
@@ -15,6 +15,13 @@ export function fetchShipmentsRequest() {
 export function fetchShipmentsSuccess(shipments) {
     return {
         type: FETCH_SHIPMENTS_SUCCESS,
+        shipments,
+    };
+}
+
+export function loadedFromFile(shipments) {
+    return {
+        type: LOADED_FROM_FILE,
         shipments,
     };
 }

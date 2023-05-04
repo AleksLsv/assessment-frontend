@@ -4,7 +4,7 @@ import TableRow from "./TableRow";
 
 function ShipmentsTable(props) {
     const rows = props.data
-        .map((ship) => <TableRow key={ship.orderNo} ship={ship}/>);
+        .map((ship) => <TableRow key={ship.orderNo} ship={ship} onDelete={props.onDelete}/>);
 
     return (
         <table id="my-table" className={s.table}>
