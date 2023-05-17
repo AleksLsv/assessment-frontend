@@ -1,10 +1,5 @@
-import {
-    FETCH_SHIPMENTS_REQUEST,
-    FETCH_SHIPMENTS_SUCCESS,
-    FETCH_SHIPMENTS_FAILURE,
 
-    DELETE_SHIPMENT, LOADED_FROM_FILE,
-} from '../actions/actionTypes';
+import {AppActionType} from '../actions/actionTypes';
 
 const initialState = {
     loading: false,
@@ -15,19 +10,19 @@ const initialState = {
 
 function shipmentsReducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_SHIPMENTS_REQUEST:
+        case AppActionType.FETCH_SHIPMENTS_REQUEST:
             return {
                 ...state,
                 loading: true,
             };
-        case FETCH_SHIPMENTS_SUCCESS:
+        case AppActionType.FETCH_SHIPMENTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 shipments: action.shipments,
                 error: null,
             };
-        case LOADED_FROM_FILE:
+        case AppActionType.LOADED_FROM_FILE:
             return {
                 ...state,
                 loading: false,
@@ -36,14 +31,14 @@ function shipmentsReducer(state = initialState, action) {
                 loadedFromFile: true
             };
 
-        case FETCH_SHIPMENTS_FAILURE:
+        case AppActionType.FETCH_SHIPMENTS_FAILURE:
             return {
                 ...state,
                 loading: false,
                 shipments: [],
                 error: action.error,
             };
-        case DELETE_SHIPMENT:
+        case AppActionType.DELETE_SHIPMENT:
             return {
                 ...state, shipments: state.shipments.filter(ship => ship.orderNo !== action.orderNo)
             };

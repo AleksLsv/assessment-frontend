@@ -1,39 +1,35 @@
-import {
-    FETCH_SHIPMENTS_REQUEST,
-    FETCH_SHIPMENTS_SUCCESS,
-    FETCH_SHIPMENTS_FAILURE, DELETE_SHIPMENT, LOADED_FROM_FILE,
-} from './actionTypes';
+import {AppActionType} from './actionTypes';
 import { fetchShipments } from '../api/api';
 
 
 export function fetchShipmentsRequest() {
     return {
-        type: FETCH_SHIPMENTS_REQUEST,
+        type: AppActionType.FETCH_SHIPMENTS_REQUEST,
     };
 }
 
 export function fetchShipmentsSuccess(shipments) {
     return {
-        type: FETCH_SHIPMENTS_SUCCESS,
+        type: AppActionType.FETCH_SHIPMENTS_SUCCESS,
         shipments,
     };
 }
 
 export function loadedFromFile(shipments) {
     return {
-        type: LOADED_FROM_FILE,
+        type: AppActionType.LOADED_FROM_FILE,
         shipments,
     };
 }
 
 export function fetchShipmentsFailure(error) {
     return {
-        type: FETCH_SHIPMENTS_FAILURE,
+        type: AppActionType.FETCH_SHIPMENTS_FAILURE,
         error,
     };
 }
 
-export const deleteShipment = (orderNo) => ({type: DELETE_SHIPMENT, orderNo});
+export const deleteShipment = (orderNo) => ({type: AppActionType.DELETE_SHIPMENT, orderNo});
 
 export function fetchShipmentsData() {
     return (dispatch) => {

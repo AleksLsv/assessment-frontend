@@ -2,7 +2,7 @@ import React from "react";
 import img from './../assets/img/notes.png'
 import {useNavigate} from "react-router-dom";
 
-function TableRow({ship}) {
+function TableRow({ship, onDelete}) {
 
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function TableRow({ship}) {
                {/* <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>*/}
                 <button onClick={handleClick}><img src={img} alt="notes"/></button>
 
-                <button onClick={handleDelete} > x </button>
+                <button onClick={onDelete} > x </button>
             </td>
         </tr>
     );
