@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteShipment, fetchShipmentsData} from './actions/actions';
+import {deleteShipment, fetchShipmentsData} from './actions/actionCreators';
 import {Route, Routes} from "react-router-dom";
 import ShipmentsTable from "./components/ShipmentsTable";
 import MyForm from "./components/MyForm";

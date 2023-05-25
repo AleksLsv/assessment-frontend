@@ -28,7 +28,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = legacy_createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 
-/*window.__store__ = store;*/
+window.__store__ = store;
 
 /*const store = legacy_createStore(reducers);*/
 
