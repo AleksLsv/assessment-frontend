@@ -35,8 +35,7 @@ function TableRow({ship, onDelete}) {
 
                {/* <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>*/}
                 <button onClick={handleClick}><img src={img} alt="notes"/></button>
-
-                <button onClick={onDelete} > x </button>
+                <button onClick={()=>{onDelete(ship.orderNo)}} > x </button>
             </td>
         </tr>
     );

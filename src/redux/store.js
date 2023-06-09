@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, compose, createStore, legacy_createStore} from "redux";
+import {applyMiddleware, combineReducers, compose, legacy_createStore} from "redux";
 import shipmentsReducer from "./shipments-reducer";
 import thunkMiddleware from "redux-thunk";
 import anyReducer from "./any-reducer";
