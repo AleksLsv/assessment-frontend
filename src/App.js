@@ -8,13 +8,11 @@ import MyForm from "./components/MyForm";
 
 
 class App extends React.Component {
+
+
     componentDidMount() {
         this.props.dispatch(fetchShipmentsData());
     }
-
-    handleDelete = (orderNo) => {
-        this.props.dispatch(deleteShipment(orderNo));
-    };
 
 
     render() {
@@ -40,7 +38,9 @@ class App extends React.Component {
                 )}
 
                 <Routes>
-                    <Route path="/" element={<ShipmentsTable data={shipments} onDelete={this.handleDelete}/>}/>
+                    <Route path="/" element={<ShipmentsTable data={shipments}
+                                                             onDelete={this.props.deleteShipment}
+                    />}/>
                     <Route path="/form" element={<MyForm/>}/>
                 </Routes>
             </div>
@@ -61,9 +61,9 @@ function mapStateToProps(state) {
 let mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        /*deleteShipment: (orderNo) => {
+        deleteShipment: (orderNo) => {
             dispatch(deleteShipment(orderNo));
-        }*/
+        }
     }
 }
 
