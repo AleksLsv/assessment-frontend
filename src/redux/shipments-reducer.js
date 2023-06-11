@@ -27,16 +27,15 @@ function shipmentsReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 shipments: action.shipments,
-                error: null,
                 loadedFromFile: true
             };
 
         case AppActionType.FETCH_SHIPMENTS_FAILURE:
             return {
-                ...state,
                 loading: false,
                 shipments: [],
                 error: action.error,
+                loadedFromFile: false
             };
         case AppActionType.DELETE_SHIPMENT:
             return {
@@ -47,7 +46,5 @@ function shipmentsReducer(state = initialState, action) {
             return state;
     }
 }
-
-/*export const deleteShipment = (orderNo) => ({type: DELETE_SHIPMENT, orderNo})*/
 
 export default shipmentsReducer;

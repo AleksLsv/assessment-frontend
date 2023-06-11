@@ -1,54 +1,70 @@
 import './App.css';
-import {Component} from "react";
-import axios from "axios";
-import ShipmentsTable from "./components/ShipmentsTable";
+import React from 'react';
+import {connect} from 'react-redux';
+import {deleteShipment, fetchShipmentsData} from './actions/actionCreators';
 import {Route, Routes} from "react-router-dom";
+import ShipmentsTable from "./components/ShipmentsTable";
 import MyForm from "./components/MyForm";
-import dataFromFile from './assets/data/shipments.json';
-import Test2 from "./components/Test2";
-import Test1 from "./components/Test1";
 
 
-class App extends Component {
-
-    state = {
-        shipmentsData: []
-    }
-
-    url = "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0";
-    url1 = "shipments.json";
-
-    //url = "/assets/data/shipments.json";
-
+class App extends React.Component {
     componentDidMount() {
-        axios.get(this.url)
-            .then(res => {
-                const data = res.data;
-                this.setState({shipmentsData: data});
-            })
-            .catch(error => this.setState({shipmentsData: dataFromFile}));
+        this.props.dispatch(fetchShipmentsData());
     }
+
+    handleDelete = (orderNo) => {
+        this.props.dispatch(deleteShipment(orderNo));
+    };
 
 
     render() {
+        const {error, loading, shipments, loadedFromFile} = this.props;
 
-        const name = 'John';
-        const age = 30;
+
+        if (loading) {
+            return <div>Loading...</div>;
+        }
+
+        if (error && !loadedFromFile) {
+            return <div>
+                <h4>Error: {error.message} </h4>
+            </div>;
+        }
 
         return (
             <div className="App">
+                {(loadedFromFile) ? (
+                    <h4>Error: {error.message} - Data loaded from file </h4>
+                ) : (
+                    <h4>Connection successful - Data loaded from server</h4>
+                )}
 
                 <Routes>
-                    <Route path="/" element={<ShipmentsTable data={this.state.shipmentsData}/>}/>
+                    <Route path="/" element={<ShipmentsTable data={shipments} onDelete={this.handleDelete}/>}/>
                     <Route path="/form" element={<MyForm/>}/>
-                    <Route path="/test1" element={<Test1 name={name} age={age}/>}/>
-                    <Route path="/test2" element={<Test2/>}/>
                 </Routes>
-
             </div>
-
         );
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const {error, loading, shipments, loadedFromFile} = state.shipments;
+    return {
+        error,
+        loading,
+        shipments,
+        loadedFromFile,
+    };
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        /*deleteShipment: (orderNo) => {
+            dispatch(deleteShipment(orderNo));
+        }*/
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

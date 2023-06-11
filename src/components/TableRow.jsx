@@ -15,13 +15,8 @@ function TableRow({ship, onDelete}) {
         navigate('/form', { state: { ship } });
     }
 
-    const handleDelete = () => {
-        alert('orderNo: ' + ship.orderNo);
-    };
+    const handleDelete = ()=>{onDelete(ship.orderNo)};
 
-  /*  const handleDelete2 = (orderNo) => {
-        props.onDelete(orderNo);
-    };*/
 
     return (
         <tr key={ship.orderNo}>
@@ -35,7 +30,7 @@ function TableRow({ship, onDelete}) {
 
                {/* <button onClick={() => handleButtonClick(ship)}><img src={img} alt="notes"/></button>*/}
                 <button onClick={handleClick}><img src={img} alt="notes"/></button>
-                <button onClick={()=>{onDelete(ship.orderNo)}} > x </button>
+                <button onClick={handleDelete} > x </button>
             </td>
         </tr>
     );

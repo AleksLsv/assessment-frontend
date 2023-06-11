@@ -1,5 +1,5 @@
 import {AppActionType} from './actionTypes';
-import { fetchShipments } from '../api/api';
+import {fetchShipments, fetchShipmentsFromFile} from '../api/api';
 
 
 export function fetchShipmentsRequest() {
@@ -38,37 +38,20 @@ export function fetchShipmentsData() {
             .then((response) => {
                 dispatch(fetchShipmentsSuccess(response.data));
             })
-            .catch((error) => {
+            .catch(error => {
                 dispatch(fetchShipmentsFailure(error));
-            });
+                dispatch(loadedFromFile(fetchShipmentsFromFile()));
+            })
+            .catch(error => {
+                dispatch(fetchShipmentsFailure(error));
+                });
     };
 }
 
 
 
-/*export function fetchShipmentsData() {
-    return (dispatch) => {
-        dispatch(fetchShipmentsRequest());
-        try {
-            return fetchShipments()
-                .then((response) => {
-                    dispatch(fetchShipmentsSuccess(response.data));
-                })
-                .catch((error) => {
-                    throw error;
-                });
-        } catch (error) {
-            // if error occurs, try to load from file
-            return fetch('../assets/data/shipments.json')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    dispatch(fetchShipmentsSuccess(data));
-                })
-                .catch((error) => {
-                    dispatch(fetchShipmentsFailure(error));
-                });
-        }
-    };
-}*/
+
+
+
+
+
