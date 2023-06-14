@@ -5,6 +5,7 @@ import {deleteShipment, fetchShipmentsData} from './actions/actionCreators';
 import {Route, Routes} from "react-router-dom";
 import ShipmentsTable from "./components/ShipmentsTable";
 import MyForm from "./components/MyForm";
+import Preloader from "./components/common/Preloader";
 
 
 class App extends React.Component {
@@ -18,9 +19,10 @@ class App extends React.Component {
     render() {
         const {error, loading, shipments, loadedFromFile} = this.props;
 
-
         if (loading) {
-            return <div>Loading...</div>;
+            return (
+                <Preloader/>
+            )
         }
 
         if (error && !loadedFromFile) {
@@ -31,6 +33,7 @@ class App extends React.Component {
 
         return (
             <div className="App">
+
                 {(loadedFromFile) ? (
                     <h4>Error: {error.message} - Data loaded from file </h4>
                 ) : (
