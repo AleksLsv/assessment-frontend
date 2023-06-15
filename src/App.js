@@ -20,9 +20,7 @@ class App extends React.Component {
         const {error, loading, shipments, loadedFromFile} = this.props;
 
         if (loading) {
-            return (
-                <Preloader/>
-            )
+            return <Preloader/>
         }
 
         if (error && !loadedFromFile) {
