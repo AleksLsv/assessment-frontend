@@ -31,6 +31,8 @@ export function fetchShipmentsFailure(error) {
 
 export const deleteShipment = (orderNo) => ({type: AppActionType.DELETE_SHIPMENT, orderNo});
 
+
+// thunkCreator, returns a thunk
 export function fetchShipmentsData() {
     return (dispatch) => {
         dispatch(fetchShipmentsRequest());
