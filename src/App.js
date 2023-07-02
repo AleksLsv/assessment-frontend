@@ -12,7 +12,8 @@ class App extends React.Component {
 
 
     componentDidMount() {
-        this.props.dispatch(fetchShipmentsData());
+        this.props.fetchShipmentsData();
+        //this.props.dispatch(fetchShipmentsData());
     }
 
 
@@ -59,13 +60,20 @@ function mapStateToProps(state) {
     };
 }
 
-let mapDispatchToProps = (dispatch) => {
+export default connect(mapStateToProps, {
+    fetchShipmentsData,
+    deleteShipment
+})(App);
+
+
+/*let mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
         deleteShipment: (orderNo) => {
             dispatch(deleteShipment(orderNo));
         }
     }
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
+

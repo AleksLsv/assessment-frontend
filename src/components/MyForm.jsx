@@ -32,6 +32,12 @@ function MyForm() {
         setFormData({ ...formData, [field]: e.target.value });
     };
 
+    const handleChange2 = (e, field) => {
+        setFormData({ ...formData, [field]: e.currentTarget.value });
+    };
+
+
+
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -59,7 +65,10 @@ function MyForm() {
                         type="text"
                         id={formField.field}
                         value={formData[formField.field]}
-                        onChange={(e) => handleChange(e, formField.field)}
+                        /*onChange={(e) => handleChange(e, formField.field)}*/
+                        onChange={(e) => handleChange2(e, formField.field)}
+                        /*onChange={(e) => alert(e.target.value)}*/
+
                     />
                 </div>
             ))}
