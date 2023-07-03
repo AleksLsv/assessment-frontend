@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {addShipment, deleteShipment, fetchShipmentsData} from './actions/actionCreators';
 import {Route, Routes} from "react-router-dom";
 import ShipmentsTable from "./components/ShipmentsTable";
-import MyForm from "./components/MyForm";
+import DetailsForm from "./components/DetailsForm";
 import Preloader from "./components/common/Preloader";
 
 
@@ -13,7 +13,6 @@ class App extends React.Component {
 
     componentDidMount() {
         this.props.fetchShipmentsData();
-        //this.props.dispatch(fetchShipmentsData());
     }
 
 
@@ -42,8 +41,8 @@ class App extends React.Component {
                 <Routes>
                     <Route path="/" element={<ShipmentsTable data={shipments}
                                                              onDelete={this.props.deleteShipment}/>}/>
-                    <Route path="/form" element={<MyForm onDelete={this.props.deleteShipment}
-                                                         onAddShipment={this.props.addShipment}/>}/>
+                    <Route path="/form" element={<DetailsForm onDelete={this.props.deleteShipment}
+                                                              onAddShipment={this.props.addShipment}/>}/>
                 </Routes>
             </div>
         );
@@ -66,15 +65,4 @@ export default connect(mapStateToProps, {
     addShipment
 })(App);
 
-
-/*let mapDispatchToProps = (dispatch) => {
-    return {
-        dispatch,
-        deleteShipment: (orderNo) => {
-            dispatch(deleteShipment(orderNo));
-        }
-    }
-}*/
-
-//export default connect(mapStateToProps, mapDispatchToProps)(App);
 

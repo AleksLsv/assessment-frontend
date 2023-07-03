@@ -1,37 +1,18 @@
-import {applyMiddleware, combineReducers, compose, legacy_createStore} from "redux";
+import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
 import shipmentsReducer from "./shipments-reducer";
 import thunkMiddleware from "redux-thunk";
 import anyReducer from "./any-reducer";
-//import {reducer as formReducer} from "redux-form";
 
 
 
 let reducers = combineReducers({
     shipments: shipmentsReducer,
     another: anyReducer
-    //form: formReducer
 });
 
-
-/*const store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));*/
-
-/*const store = createStore(
-    shipmentsReducer,
-    applyMiddleware(thunkMiddleware),
-);*/
-
-
-/*const store = createStore(
-    reducers,
-    applyMiddleware(thunkMiddleware),
-);*/
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = legacy_createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
-
+const store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.__store__ = store;
 
-/*const store = legacy_createStore(reducers);*/
 
 export default store;

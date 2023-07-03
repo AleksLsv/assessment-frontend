@@ -1,4 +1,3 @@
-
 import {AppActionType} from '../actions/actionTypes';
 
 const initialState = {
