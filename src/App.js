@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteShipment, fetchShipmentsData} from './actions/actionCreators';
+import {addShipment, deleteShipment, fetchShipmentsData} from './actions/actionCreators';
 import {Route, Routes} from "react-router-dom";
 import ShipmentsTable from "./components/ShipmentsTable";
 import MyForm from "./components/MyForm";
@@ -41,9 +41,9 @@ class App extends React.Component {
 
                 <Routes>
                     <Route path="/" element={<ShipmentsTable data={shipments}
-                                                             onDelete={this.props.deleteShipment}
-                    />}/>
-                    <Route path="/form" element={<MyForm/>}/>
+                                                             onDelete={this.props.deleteShipment}/>}/>
+                    <Route path="/form" element={<MyForm onDelete={this.props.deleteShipment}
+                                                         onAddShipment={this.props.addShipment}/>}/>
                 </Routes>
             </div>
         );
@@ -62,7 +62,8 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     fetchShipmentsData,
-    deleteShipment
+    deleteShipment,
+    addShipment
 })(App);
 
 

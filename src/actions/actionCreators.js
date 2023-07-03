@@ -30,7 +30,7 @@ export function fetchShipmentsFailure(error) {
 }
 
 export const deleteShipment = (orderNo) => ({type: AppActionType.DELETE_SHIPMENT, orderNo});
-export const updateShipment = (data) => ({type: AppActionType.UPDATE_SHIPMENT, data});
+export const addShipment = (ship) => ({type: AppActionType.ADD_SHIPMENT, payload: ship});
 
 
 

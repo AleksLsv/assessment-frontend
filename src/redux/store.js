@@ -2,12 +2,14 @@ import {applyMiddleware, combineReducers, compose, legacy_createStore} from "red
 import shipmentsReducer from "./shipments-reducer";
 import thunkMiddleware from "redux-thunk";
 import anyReducer from "./any-reducer";
+//import {reducer as formReducer} from "redux-form";
 
 
 
 let reducers = combineReducers({
     shipments: shipmentsReducer,
     another: anyReducer
+    //form: formReducer
 });
 
 

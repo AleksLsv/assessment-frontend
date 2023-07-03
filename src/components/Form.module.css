@@ -35,3 +35,13 @@ h4 {
     background-color: burlywood;
     border-radius: 3px;
 }
+
+.button2 {
+    position: absolute;
+    height: 30px;
+    top: 45%;
+    left: 1.5%;
+    background-color: lightpink;
+    border-radius: 3px;
+    font-weight: bold;
+}

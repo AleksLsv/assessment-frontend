@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styles from "./Form.module.css";
 import {useNavigate} from "react-router-dom";
 import { useLocation } from 'react-router-dom';
+import handleSubmit from "redux-form/lib/handleSubmit";
 
-function MyForm() {
+function MyForm(props) {
     const { state } = useLocation();
     const { ship } = state;
 
@@ -57,7 +58,7 @@ function MyForm() {
     return (
         <div>
         <h4>SHIPMENT DETAILS</h4>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={props.handleSubmit}>
             {formFields.map((formField) => (
                 <div className={styles.formField} key={formField.field}>
                     <label htmlFor={formField.field}>{formField.label}</label>
@@ -72,6 +73,7 @@ function MyForm() {
                     />
                 </div>
             ))}
+            <button className={styles.button2}> Update data</button>
         </form>
 
 
