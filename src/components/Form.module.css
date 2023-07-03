@@ -45,3 +45,13 @@ h4 {
     border-radius: 3px;
     font-weight: bold;
 }
+
+.button3 {
+    position: absolute;
+    height: 30px;
+    top: 45%;
+    left: 10%;
+    background-color: aquamarine;
+    border-radius: 3px;
+    font-weight: bold;
+}

@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styles from "./Form.module.css";
 import {useNavigate} from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-import handleSubmit from "redux-form/lib/handleSubmit";
 
-function MyForm(props) {
+function MyForm({onAddShipment, onDelete}) {
     const { state } = useLocation();
     const { ship } = state;
 
@@ -45,6 +44,21 @@ function MyForm(props) {
         navigate('/');
     };
 
+    const onSubmit = (e) => {
+        onAddShipment(formData);
+        onDelete(ship.orderNo);
+        //alert(ship.orderNo);
+        alert(formData["orderNo"]);
+        e.preventDefault();
+    };
+
+    const onSubmit2 = (e) => {
+        onAddShipment(formData);
+        //alert(ship.orderNo);
+        alert(formData["orderNo"]);
+        e.preventDefault();
+    };
+
 
     const formFields = [
         { label: "Order No", field: "orderNo" },
@@ -55,10 +69,12 @@ function MyForm(props) {
         { label: "Status", field: "status" }
     ];
 
+
+
     return (
         <div>
         <h4>SHIPMENT DETAILS</h4>
-        <form className={styles.form} onSubmit={props.handleSubmit}>
+        <form className={styles.form}>
             {formFields.map((formField) => (
                 <div className={styles.formField} key={formField.field}>
                     <label htmlFor={formField.field}>{formField.label}</label>
@@ -73,7 +89,8 @@ function MyForm(props) {
                     />
                 </div>
             ))}
-            <button className={styles.button2}> Update data</button>
+            <button className={styles.button2} type="submit" onClick={onSubmit}> Update data</button>
+            <button className={styles.button3} type="submit" onClick={onSubmit2}> Add data</button>
         </form>
 
 
